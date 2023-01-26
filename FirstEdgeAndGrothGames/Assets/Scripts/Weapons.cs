@@ -7,6 +7,10 @@ public class Weapons : MonoBehaviour
 
     //float weaponAttackTime, timeBetweenAttacks;
     Animator swordSwing;
+
+    [SerializeField]
+    public int damage;
+    public int speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +28,18 @@ public class Weapons : MonoBehaviour
         else
         {
             swordSwing.SetBool("stickSwing",false);
+        }
+
+         transform.Translate(Vector2.up * speed * Time.deltaTime);
+    }
+
+    void OnTriggerEnter2D(Collider2D hit)
+    {
+        if(hit.tag == "Enemy" && swordSwing.GetBool("stickSwing")== true)
+        {
+            
+            hit.GetComponent<Enemy>().TakeDamage(damage);
+
         }
     }
 }
