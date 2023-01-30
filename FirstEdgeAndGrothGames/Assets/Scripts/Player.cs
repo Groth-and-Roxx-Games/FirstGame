@@ -22,8 +22,8 @@ public class Player : MonoBehaviour
         Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         moveAmount = moveInput.normalized * speed;
 
-
-
+    
+        
     }
 
     void FixedUpdate()
