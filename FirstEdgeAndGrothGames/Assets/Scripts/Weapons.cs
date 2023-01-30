@@ -23,7 +23,7 @@ public class Weapons : MonoBehaviour
         if(Input.GetMouseButton(0))
         {
             swordSwing.SetBool("stickSwing",true);
-
+         
         }
         else
         {
@@ -36,6 +36,16 @@ public class Weapons : MonoBehaviour
     void OnTriggerEnter2D(Collider2D hit)
     {
         if(hit.tag == "Enemy" && swordSwing.GetBool("stickSwing")== true)
+        {
+            
+            hit.GetComponent<Enemy>().TakeDamage(damage);
+
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D hit)
+    {
+        if(hit.tag == "Enemy" && swordSwing.GetBool("stickSwing") == true)
         {
             
             hit.GetComponent<Enemy>().TakeDamage(damage);
